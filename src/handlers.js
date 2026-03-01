@@ -7,13 +7,11 @@ const capitalizeFirstLetter = (type) => {
 export const servePage = async (c) => {
   const register = c.get("register");
   let type = c.req.param("type");
-  // console.log(type);
   if (type === undefined || type === "index") {
     type = "all";
   }
   const activeType = capitalizeFirstLetter(type);
   const pokemons = await register.getPokemonsOf(activeType);
-  // console.log(activeType, c.req.path);
   return c.render("index.eta", { activeType, pokemons });
 };
 
