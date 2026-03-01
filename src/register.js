@@ -16,4 +16,10 @@ export default class Pokedex {
     }
     return pokemons.filter((p) => p.types.includes(type));
   }
+
+  async fetchPokemonsByString(string) {
+    const pokemons = await this.#content;
+    const searchStr = string.toLowerCase();
+    return pokemons.filter(p => p.pokeName.toLowerCase().startsWith(searchStr));
+  }
 }

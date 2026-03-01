@@ -7,14 +7,19 @@ const capitalizeFirstLetter = (type) => {
 export const servePage = async (c) => {
   const register = c.get("register");
   let type = c.req.param("type");
-  console.log(type);
+  // console.log(type);
   if (type === undefined || type === "index") {
     type = "all";
   }
   const activeType = capitalizeFirstLetter(type);
-  console.log(activeType, c.req.path);
-  return c.render("index.eta", {
-    activeType,
-    pokemons: await register.getPokemonsOf(activeType),
-  });
+  const pokemons = await register.getPokemonsOf(activeType);
+  // console.log(activeType, c.req.path);
+  return c.render("index.eta", { activeType, pokemons });
+};
+
+export const serveSearchPokemon = async (c) => {
+  const register = c.get("register");
+  const string = c.req.query("pokemon");
+  const pokemons = await register.fetchPokemonsByString(string);
+  return c.render("index.eta", { activeType: "", pokemons });
 };
