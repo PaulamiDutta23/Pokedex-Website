@@ -15,69 +15,92 @@
   <div class="main">
     <div class="sidebar">
       <ul class="sidebar-contents">
-        <li class=all><a href="/index.html">All</a></li>
-        <li><a href="/pages/bug.html">Bug</a></li>
-        <li><a href="/pages/dark.html">Dark</a></li>
-        <li><a href="/pages/dragon.html">Dragon</a></li>
-        <li><a href="/pages/electric.html">Electric</a></li>
-        <li><a href="/pages/fairy.html">Fairy</a></li>
-        <li><a href="/pages/fighting.html">Fighting</a></li>
-        <li><a href="/pages/fire.html">Fire</a></li>
-        <li><a href="/pages/flying.html">Flying</a></li>
-        <li><a href="/pages/ghost.html">Ghost</a></li>
-        <li><a href="/pages/grass.html">Grass</a></li>
-        <li><a href="/pages/ground.html">Ground</a></li>
-        <li><a href="/pages/ice.html">Ice</a></li>
-        <li><a href="/pages/normal.html">Normal</a></li>
-        <li><a href="/pages/poison.html">Poison</a></li>
-        <li><a href="/pages/psychic.html">Psychic</a></li>
-        <li><a href="/pages/rock.html">Rock</a></li>
-        <li><a href="/pages/steel.html">Steel</a></li>
-        <li><a href="/pages/water.html">Water</a></li>
+        <% const types=[{name :"All", page : "/index.html" }, {name:"Bug", page:"/bug.html"} , {name:"Dark",
+          page:"/dark.html"} , {name:"Dragon", page:"/dragon.html"} , {name:"Electric", page:"/electric.html"} ,
+          {name:"Fairy", page:"/fairy.html"} , {name:"Fighting", page:"/fighting.html"} ,{name:"Fire",
+          page:"/fire.html"}, {name: "Flying" , page:"/flying.html"} ,{name:"Ghost", page:"/ghost.html"}, {name:"Grass",
+          page:"grass.html"} , {name:"Ground", page:"/ground.html"} , {name:"Ice", page:"/ice.html"} , {name:"Normal",
+          page:"/normal.html"} , {name:"Poison", page:"/poison.html"} , {name:"Psychic", page:"/psychic.html"} ,
+          {name:"Rock", page:"/rock.html"} , {name:"Steel", page:"/steel.html"} , {name:"Water", page:"/water.html"}] %>
+          <% types.forEach((type)=> { %>
+            <li <% if(it.activePage===type.page) { %>
+              class="<%= type.name.toLowerCase() %>"
+                <% } %>
+                  >
+                  <a href="<%= type.page %>">
+                    <%= type.name %>
+                  </a>
+            </li>
+            <% }) %>
       </ul>
     </div>
     <div class="card-container">
-      <div class="card">
-        <div class="img-container"
-          style="background: linear-gradient(135deg, hsl(var(--grass) / 50% ), hsl(var(--poison) / 50%), transparent);">
-          <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-            alt="This is an image of bulbasaur">
-        </div>
-        <div class="header">
-          <h2>Bulbasaur</h2>
-          <div class="types">
-            <div class="type grass">Grass</div>
-            <div class="type poison">Poison</div>
+      <% it.pokemons.forEach(function(pokemon) { %>
+        <div class="card">
+
+          <div class="img-container" style="background: linear-gradient(135deg,
+    <%= pokemon.types
+        .map(type => `hsl(var(--${type.toLowerCase()}) / 50%)`)
+        .join(', ')
+    %>,
+    transparent
+  );">
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= pokemon.id %>.png"
+              alt="This is an image of <%= pokemon.pokeName %>">
           </div>
+          <div class="header">
+            <h2>
+              <%= pokemon.pokeName %>
+            </h2>
+            <div class="types">
+              <% pokemon.types.forEach(function(type){ %>
+                <div class="type <%= type.toLowerCase() %>">
+                  <%= type %>
+                </div>
+                <% }) %>
+            </div>
+          </div>
+          <table class="stats">
+            <tr>
+              <td class="data">Weight</td>
+              <td class="right-align">
+                <%= pokemon.weight %>
+              </td>
+            </tr>
+            <tr>
+              <td class="data">Base XP</td>
+              <td class="right-align">
+                <%= pokemon.base_experience %>
+              </td>
+            </tr>
+            <tr>
+              <td class="data">HP</td>
+              <td class="right-align">
+                <%= pokemon.hp %>
+              </td>
+            </tr>
+            <tr>
+              <td class="data">Attack</td>
+              <td class="right-align">
+                <%= pokemon.attack %>
+              </td>
+            </tr>
+            <tr>
+              <td class="data">Defense</td>
+              <td class="right-align">
+                <%= pokemon.defense %>
+              </td>
+            </tr>
+            <tr>
+              <td class="data">Speed</td>
+              <td class="right-align">
+                <%= pokemon.speed %>
+              </td>
+            </tr>
+          </table>
         </div>
-        <table class="stats">
-          <tr>
-            <td class="data">Weight</td>
-            <td class="right-align">69</td>
-          </tr>
-          <tr>
-            <td class="data">Base XP</td>
-            <td class="right-align">64</td>
-          </tr>
-          <tr>
-            <td class="data">HP</td>
-            <td class="right-align">45</td>
-          </tr>
-          <tr>
-            <td class="data">Attack</td>
-            <td class="right-align">49</td>
-          </tr>
-          <tr>
-            <td class="data">Defense</td>
-            <td class="right-align">49</td>
-          </tr>
-          <tr>
-            <td class="data">Speed</td>
-            <td class="right-align">45</td>
-          </tr>
-        </table>
-      </div>
+        <% }) %>
     </div>
   </div>
 </body>
