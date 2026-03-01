@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="/styles/style.css">
   <link rel="stylesheet" href="/styles/colors.css">
   <style>
-    .all a {
+    .<%= it.activeType.toLowerCase() %> a {
       color: white;
     }
   </style>
@@ -15,15 +15,16 @@
   <div class="main">
     <div class="sidebar">
       <ul class="sidebar-contents">
-        <% const types=[{name :"All", page : "/index.html" }, {name:"Bug", page:"/bug.html"} , {name:"Dark",
-          page:"/dark.html"} , {name:"Dragon", page:"/dragon.html"} , {name:"Electric", page:"/electric.html"} ,
-          {name:"Fairy", page:"/fairy.html"} , {name:"Fighting", page:"/fighting.html"} ,{name:"Fire",
-          page:"/fire.html"}, {name: "Flying" , page:"/flying.html"} ,{name:"Ghost", page:"/ghost.html"}, {name:"Grass",
-          page:"grass.html"} , {name:"Ground", page:"/ground.html"} , {name:"Ice", page:"/ice.html"} , {name:"Normal",
-          page:"/normal.html"} , {name:"Poison", page:"/poison.html"} , {name:"Psychic", page:"/psychic.html"} ,
-          {name:"Rock", page:"/rock.html"} , {name:"Steel", page:"/steel.html"} , {name:"Water", page:"/water.html"}] %>
+        <% const types=[{name :"All", page : "/index" }, {name:"Bug", page:"/bug"} , {name:"Dark",
+          page:"/dark"} , {name:"Dragon", page:"/dragon"} , {name:"Electric", page:"/electric"} ,
+          {name:"Fairy", page:"/fairy"} , {name:"Fighting", page:"/fighting"} ,{name:"Fire",
+          page:"/fire"}, {name: "Flying" , page:"/flying"} ,{name:"Ghost", page:"/ghost"}, {name:"Grass",
+          page:"grass"} , {name:"Ground", page:"/ground"} , {name:"Ice", page:"/ice"} , {name:"Normal",
+          page:"/normal"} , {name:"Poison", page:"/poison"} , {name:"Psychic", page:"/psychic"} ,
+          {name:"Rock", page:"/rock"} , {name:"Steel", page:"/steel"} , {name:"Water", page:"/water"}] %>
+          
           <% types.forEach((type)=> { %>
-            <li <% if(it.activePage===type.page) { %>
+            <li <% if(it.activeType===type.name) { %>
               class="<%= type.name.toLowerCase() %>"
                 <% } %>
                   >

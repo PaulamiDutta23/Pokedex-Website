@@ -17,8 +17,7 @@ export const createApp = ({ eta, pokedex }) => {
     });
     return next();
   });
-  app.get("/", servePage);
-  app.get("/index.html", servePage);
+  app.get("/:type?", servePage);
   app.get("*", serveStatic({ root: "public" }));
   return app;
 };

@@ -9,11 +9,11 @@ export default class Pokedex {
       });
   }
 
-  async fetchAll() {
-    return structuredClone(await this.#content);
-  }
-
   async getPokemonsOf(type) {
-    return await this.#content.filter(p => p.types.includes(type));
+    const pokemons = await this.#content;
+    if (type === "All") {
+      return structuredClone(pokemons);
+    }
+    return pokemons.filter((p) => p.types.includes(type));
   }
 }
