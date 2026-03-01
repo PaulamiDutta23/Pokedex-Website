@@ -79,12 +79,13 @@
   border: 1px solid rgb(195, 194, 194);
   border-radius: 5px;
   margin-top: 1.5em;
-  background-color: #f4f4f4;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   padding: 10px;
   gap:10px;
   overflow: scroll;
+  box-shadow: 1px 1px 5px 5px rgb(232, 231, 231);
 }
 
 .img-container {
