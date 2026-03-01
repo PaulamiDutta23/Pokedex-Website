@@ -1,0 +1,85 @@
+<html>
+
+<head>
+  <title>Pokedex</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/styles/colors.css">
+  <style>
+    .all a {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="sidebar">
+      <ul class="sidebar-contents">
+        <li class=all><a href="/index.html">All</a></li>
+        <li><a href="/pages/bug.html">Bug</a></li>
+        <li><a href="/pages/dark.html">Dark</a></li>
+        <li><a href="/pages/dragon.html">Dragon</a></li>
+        <li><a href="/pages/electric.html">Electric</a></li>
+        <li><a href="/pages/fairy.html">Fairy</a></li>
+        <li><a href="/pages/fighting.html">Fighting</a></li>
+        <li><a href="/pages/fire.html">Fire</a></li>
+        <li><a href="/pages/flying.html">Flying</a></li>
+        <li><a href="/pages/ghost.html">Ghost</a></li>
+        <li><a href="/pages/grass.html">Grass</a></li>
+        <li><a href="/pages/ground.html">Ground</a></li>
+        <li><a href="/pages/ice.html">Ice</a></li>
+        <li><a href="/pages/normal.html">Normal</a></li>
+        <li><a href="/pages/poison.html">Poison</a></li>
+        <li><a href="/pages/psychic.html">Psychic</a></li>
+        <li><a href="/pages/rock.html">Rock</a></li>
+        <li><a href="/pages/steel.html">Steel</a></li>
+        <li><a href="/pages/water.html">Water</a></li>
+      </ul>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="img-container"
+          style="background: linear-gradient(135deg, hsl(var(--grass) / 50% ), hsl(var(--poison) / 50%), transparent);">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+            alt="This is an image of bulbasaur">
+        </div>
+        <div class="header">
+          <h2>Bulbasaur</h2>
+          <div class="types">
+            <div class="type grass">Grass</div>
+            <div class="type poison">Poison</div>
+          </div>
+        </div>
+        <table class="stats">
+          <tr>
+            <td class="data">Weight</td>
+            <td class="right-align">69</td>
+          </tr>
+          <tr>
+            <td class="data">Base XP</td>
+            <td class="right-align">64</td>
+          </tr>
+          <tr>
+            <td class="data">HP</td>
+            <td class="right-align">45</td>
+          </tr>
+          <tr>
+            <td class="data">Attack</td>
+            <td class="right-align">49</td>
+          </tr>
+          <tr>
+            <td class="data">Defense</td>
+            <td class="right-align">49</td>
+          </tr>
+          <tr>
+            <td class="data">Speed</td>
+            <td class="right-align">45</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
