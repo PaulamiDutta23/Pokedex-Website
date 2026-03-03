@@ -55,6 +55,8 @@
   width:50%;
   font-size: 30px;
   padding: 10px;
+  border-radius: 30px;
+  border: 1px solid black;
 }
 
 .search-bar button {
