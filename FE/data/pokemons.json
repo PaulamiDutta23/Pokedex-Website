@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "pokeName": "Bulbasaur",
+    "weight": 69,
+    "base_experience": 64,
+    "hp": 45,
+    "attack": 49,
+    "defense": 49,
+    "types": [
+      "Grass",
+      "Poison"
+    ],
+    "speed": 45
+  }
+]
