@@ -1,7 +1,7 @@
 export default class Pokedex {
   #content;
   constructor() {
-    this.#content = Deno.readTextFile("./data/pokemons.json")
+    this.#content = Deno.readTextFile("./FE/public/data/pokemons.json")
       .then((content) => JSON.parse(content))
       .catch((e) => {
         console.log(e.message);
