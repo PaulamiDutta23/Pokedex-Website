@@ -67,8 +67,16 @@ const createPokemonCard = (pokemon) => {
   return createFragments(["div", { class: "card" }, img, header, stats]);
 };
 
-const renderPage = (allPokemon, type, cardContainer) => {
+const createItem = (t, currentType, path) => {
+  return t === currentType ?
+  createFragments(["li", {class: `${t.toLowerCase()}`}, ["a", {href:`/${path}`, style:`color:white`}, t]])
+  : createFragments(["li", {}, ["a", {href:`/${t ==="All"? "" : t.toLowerCase()}`}, t]]);
+};
+
+const renderPage = (allPokemon, type, cardContainer, sidebarList) => {
+  const types = ["All", "Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"];
   const currentType = type ? capitalizeFirstLetter(type) : "All";
+  sidebarList.append(...types.map(t => createItem(t, currentType, type)));
   const pokemon = type
     ? allPokemon.filter((p) => p.types.includes(currentType))
     : allPokemon;
@@ -77,9 +85,11 @@ const renderPage = (allPokemon, type, cardContainer) => {
 
 window.onload = async () => {
   const cardContainer = document.querySelector(".card-container");
+  const sidebarList = document.querySelector(".sidebar-contents");
   const allPokemon = await fetchAllPokemon();
-  const type = window.location.pathname.split("/").pop();
+  let type = window.location.pathname.split("/").pop();
+  if(type === "all") type = "";
   fetch(`/${type}`).then((res) => res.text()).then((_data) =>
-    renderPage(allPokemon, type, cardContainer)
+    renderPage(allPokemon, type, cardContainer, sidebarList)
   );
 };
