@@ -72,13 +72,7 @@ const renderPage = (allPokemon, type, cardContainer) => {
   const pokemon = type
     ? allPokemon.filter((p) => p.types.includes(currentType))
     : allPokemon;
-  const cards = pokemon.map((pokemon, i) => {
-    return createPokemonCard(pokemon);
-  });
-
-  // console.log(...pokemon.map(createPokemonCard));
   cardContainer.append(...pokemon.map(createPokemonCard));
-  // return cardContainer;
 };
 
 window.onload = async () => {
