@@ -55,8 +55,16 @@ const createRows = (
   return statsContainer;
 };
 
+const setBgStyle = ({ types }) => {
+  const gradinets = types.map((t) => `hsl(var(--${t.toLowerCase()}) / 50%)`).join(",");
+  return `background: linear-gradient(135deg,${gradinets} , transparent 85%);`;
+};
+
 const createPokemonCard = (pokemon) => {
-  const img = ["div", { class: "img-container" }, createImg(pokemon)];
+  const img = ["div", {
+    class: "img-container",
+    style: `${setBgStyle(pokemon)}`,
+  }, createImg(pokemon)];
   const header = [
     "div",
     { class: "header" },
