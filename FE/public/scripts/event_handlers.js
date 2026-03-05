@@ -4,13 +4,14 @@ const fetchAllPokemon = () =>
 const capitalizeFirstLetter = (string) => {
   const type = string.toLowerCase();
   const firstLetter = type[0].toUpperCase();
-  return firstLetter.concat(type.slice(1));
+  return `${firstLetter}${type.slice(1)}`;
 };
 
 const setBgStyle = ({ types }) => {
-  const gradinets = types.map((t) => `hsl(var(--${t.toLowerCase()}) / 50%)`)
+  const gradients = types
+    .map((t) => `hsl(var(--${t.toLowerCase()}) / 50%)`)
     .join(",");
-  return `background: linear-gradient(135deg,${gradinets} , transparent 85%);`;
+  return `background: linear-gradient(135deg,${gradients} , transparent 85%);`;
 };
 
 const createImg = ({ pokeName, id }) => [
@@ -26,10 +27,10 @@ const createImg = ({ pokeName, id }) => [
 const createTypes = ({ types }) =>
   types.map((type) => ["div", { class: `type ${type.toLowerCase()}` }, type]);
 
-const createRows = ({ weight, base_xp, hp, attack, defense, speed }) => {
+const createRows = ({ weight, baseXP, hp, attack, defense, speed }) => {
   const stats = {
     "Weight": weight,
-    "Base XP": base_xp,
+    "Base XP": baseXP,
     "HP": hp,
     "Attack": attack,
     "Defense": defense,
@@ -40,7 +41,7 @@ const createRows = ({ weight, base_xp, hp, attack, defense, speed }) => {
     [key, value],
   ) => ["tr", {}, ["td", { class: "data" }, key], ["td", {
     class: "right-align",
-  }, value ? value.toString() : "Unknown"]]);
+  }, `${value}`]]);
 };
 
 const createFragments = ([tag, attrs, ...contents]) => {
