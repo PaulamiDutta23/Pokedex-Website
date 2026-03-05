@@ -38,7 +38,7 @@
   padding-left: 25px;
 }
 
-.sidebar-contents li, .sidebar-contents li>a {
+.sidebar-contents li, .sidebar-contents a {
   transition: transform 0.8s ease, background 0.8s ease;
 }
 
@@ -52,7 +52,7 @@
   transform: translateX(4px);
 }
 
-.sidebar-contents li:not(.active):hover a {
+.sidebar-contents a li:not(.active):hover {
   font-size: 30px;
   color: black;
 }

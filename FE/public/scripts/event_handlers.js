@@ -79,13 +79,13 @@ const getParam = () => {
 
 const createItem = (type, currentType, param) =>
   type === currentType
-    ? createFragments(["li", { class: `${type.toLowerCase()} active` }, ["a", {
+    ? createFragments(["a", {
       href: `/${param}`,
       style: `color:white`,
-    }, type]])
-    : createFragments(["li", {}, ["a", {
+    }, ["li", { class: `${type.toLowerCase()} active` }, type]])
+    : createFragments(["a", {
       href: `/${type === "All" ? "" : type.toLowerCase()}`,
-    }, type]]);
+    }, ["li", {}, type]]);
 
 const getPokemonOnSearch = (allPokemon) => {
   const searchStr = new URLSearchParams(window.location.search).get("pokemon");
