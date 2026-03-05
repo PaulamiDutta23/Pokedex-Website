@@ -79,7 +79,7 @@ const getParam = () => {
 
 const createItem = (type, currentType, param) =>
   type === currentType
-    ? createFragments(["li", { class: `${type.toLowerCase()}` }, ["a", {
+    ? createFragments(["li", { class: `${type.toLowerCase()} active` }, ["a", {
       href: `/${param}`,
       style: `color:white`,
     }, type]])
